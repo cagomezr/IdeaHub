@@ -64,4 +64,10 @@ class HomeController extends Controller
 		$comment ->save();
 		return redirect()->route('topic', ['id' => $request->topic_id]);
 	}
+	public  function deleteComment(Request $request){
+		$comment = Comment::where ('id', $request->comment_id)->first();	
+		$original = $comment->topic->id;
+		$comment->delete();
+		return redirect()->route('topic', ['id' => $original]);
+	}
 }

@@ -8,17 +8,21 @@
 	<h2>topic  does not  exist </h2>
 	<a href="{{Route('home')}}">Go back and Find a  new topic!</a>	
 @else
-	  <div class="panel panel-default">
-	  <div class="panel-heading"><h2>{{$topic->title}}</h2> </div>
-	   <div class="panel-body"><p>{{$topic->body}}</p> <p>{{date('M-d-Y ', strtotime($topic->created_at))}} on {{date('h:i a', strtotime($topic->created_at))}}</p></div></div>
-	
-	
-
-   			@if($authcheck)
-   			<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
-		Delete Post
-	</button>		
-   			@endif
+		<div class="panel panel-default">
+			<div class="panel-heading"><h2>{{$topic->title}}</h2> </div>
+			<div class="panel-body">
+				<p>{{$topic->body}}</p>
+				<p>{{date('M-d-Y ', strtotime($topic->created_at))}} on {{date('h:i a', strtotime($topic->created_at))}}</p>
+				<div>
+					@if($authcheck)
+						<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteModal">
+							Delete Post
+						</button>		
+					@endif
+				</div>
+			</div>
+		</div>
+   			
 	   <div>
 	  	  @if(!empty($topic->comments))
           	
@@ -87,7 +91,7 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					
+					<h4>New Comment </h4>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -95,7 +99,7 @@
 				<div class="modal-body">
 					 
 						 <div class="form-group">
-							 <input  type="text"  name="title" id="title" placeholder="title optional"/> 
+							 <input  type="text"  name="title" id="title" placeholder="title  (optional)"/> 
 							 <input type="hidden" name="topic_id" id="topic_id" value ="{{$topic->id}}"  />
 						 </div>
 						 <div class="form-group">
