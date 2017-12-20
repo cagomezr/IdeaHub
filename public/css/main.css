@@ -1,0 +1,11 @@
+.tbClass {
+    background:  #FFF;
+    width:100%;
+}
+.tbClass>tr{
+    padding:1em;
+}
+.tbClass td{ padding:1em;border:1px solid #ccc}
+.tbClass span{display:block;}
+.form-group input{ width: 100%;}
+.form-group textarea{ width: 100%;}
