@@ -13,8 +13,8 @@
 							{{csrf_field()}}
 							<div class="formcontainer">
 								<div class="form-group">
-									<input type="text" name="title" id="title" class="form control" placeholder="title"/>
-									<textarea name ="body" id="body" class="form control" rows="3" placeholder="whats on your mind"></textarea>
+									<input required type="text" name="title" id="title" class="form control" placeholder="title"/>
+									<textarea required name ="body" id="body" class="form control" rows="3" placeholder="whats on your mind"></textarea>
 								</div>             
 								<div class="form-group">
 									<button type="submit" class="btn btn-primary btn sm" > 	Post</button>

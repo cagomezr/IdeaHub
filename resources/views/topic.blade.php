@@ -109,7 +109,7 @@
 							 <input type="hidden" name="topic_id" id="topic_id" value ="{{$topic->id}}"  />
 						 </div>
 						 <div class="form-group">
-						 	<textarea name ="comment" id="comment" class="form control" rows="2" placeholder="what you think?"></textarea>
+						 	<textarea  name ="comment" id="comment" class="form control" rows="2" placeholder="what you think?" required ></textarea>
 						 </div> 
 						
 					 	

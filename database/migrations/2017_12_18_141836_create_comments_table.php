@@ -18,7 +18,7 @@ class CreateCommentsTable extends Migration
 			$table->integer('user_id');
 			$table->integer('topic_id');
 			$table->string('title')->default("Reply");
-			$table->string('body');
+			$table->string('body', 700);
             $table->timestamps();
         });
     }
