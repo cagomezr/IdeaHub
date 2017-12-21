@@ -49,10 +49,13 @@ class HomeController extends Controller
 		return redirect(route("home"));	
 	}
 	public function getTopic($id){
-		$topic = Topic::where ('id', $id)->first();		
-		$author = ( Auth::user()->id === $topic->user->id);
-		return view('topic',['topic' => $topic , 'authcheck' =>  $author]);
-		
+		$topic = Topic::where ('id', $id)->first();	
+		if(!empty ($topic)){
+			$author = ( Auth::user()->id === $topic->user->id);		
+			return view('topic',['topic' => $topic , 'authcheck' =>  $author]);
+		}else{
+			return view('topic',['topic' => null , 'authcheck' =>  false]);	
+		}
 	}
 	
 	public function processComment(Request $request){

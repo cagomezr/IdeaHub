@@ -73,6 +73,27 @@
         </nav>
 
         @yield('content')
+        <footer>
+        	<div class="container">
+        		<div class="footercont">
+        			<a href="{{route('home')}}" > Home </a>
+        		
+        			<a href="{{route('new-topic')}}" > Create Topic </a> 
+        			
+        			  <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                            Logout
+                                        </a>
+        		</div>      		 
+        		
+        		
+        		
+        	</div>
+        	<div class="footerending">
+        		<span> Carlos Gomez 2017</span>
+        	</div>
+        </footer>
     </div>
 
     <!-- Scripts -->

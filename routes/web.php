@@ -22,4 +22,5 @@ Route::get('/newtopic', 'HomeController@newTopic')->name('new-topic');
 Route::post('/processtopic', 'HomeController@processTopic')->name('process-topic');
 Route::post('/deletetopic', 'HomeController@deleteTopic')->name('delete-topic');
 Route::post('/processcomment', 'HomeController@processComment')->name('process-comment');
+Route::post('/deletecomment', 'HomeController@deleteComment')->name('delete-comment');
 Route::get('/topic/{id}','HomeController@getTopic')->name('topic');

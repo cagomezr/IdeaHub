@@ -1,16 +1,17 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container replycheck body">
     <div class="row">
 <div class="col-md-12  topicArea">
+	
 	@if(empty($topic))
 	<h2>topic  does not  exist </h2>
 	<a href="{{Route('home')}}">Go back and Find a  new topic!</a>	
-@else
-		<div class="panel panel-default">
-			<div class="panel-heading"><h2>{{$topic->title}}</h2> </div>
-			<div class="panel-body">
+	@else
+		<div class="jumbotron">
+			<h1>{{$topic->title}}</h1> 
+			<div class="discussion-body">
 				<p>{{$topic->body}}</p>
 				<p>{{date('M-d-Y ', strtotime($topic->created_at))}} on {{date('h:i a', strtotime($topic->created_at))}}</p>
 				<div>
@@ -19,6 +20,9 @@
 							Delete Post
 						</button>		
 					@endif
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#replyModal">
+						Reply
+					</button>
 				</div>
 			</div>
 		</div>
@@ -32,7 +36,7 @@
 
                		 <div class="panel-body">
                 		<p>{{$comment->body}}</p>
-                		<p>posted by {{$comment->user->name}} on {{date('M-d-Y ', strtotime($comment->created_at))}} at {{date('h:i a', 	strtotime($comment->created_at))}}</p>
+                		<p><strong>Posted by {{$comment->user->name}}</strong>  on {{date('M-d-Y ', strtotime($comment->created_at))}} at {{date('h:i a', 	strtotime($comment->created_at))}}</p>
             		</div>
 		   		</div>
                 @endforeach
@@ -40,7 +44,7 @@
         
 	  @endif
 	 
- @endif  
+ 
  </div>
 	</div>
 	
@@ -48,7 +52,8 @@
 	<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#replyModal">
 		Reply
 	</button>
-<!-- Modal -->
+	@if($authcheck)
+<!-- Modal Delete -->
 	<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		
 		{{csrf_field()}}
@@ -84,6 +89,7 @@
 		</div>
 	
 	</div>
+	@endif
 	<!-- Modal -->
 	<div class="modal fade" id="replyModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<form action="{{route('process-comment')}}" method="post">
@@ -118,5 +124,7 @@
 		</div>
 		</form>
 	</div>
+	@endif  
 </div>
+
 @endsection
